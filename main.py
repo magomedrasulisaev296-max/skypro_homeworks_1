@@ -70,3 +70,4 @@ def main():
 сумма: {i["amount"]}{i["currency_code"]}''')
 
 main()
+# 1

@@ -6,9 +6,6 @@ def get_mask_card_number(card_number: str) -> str:
     return masked_card_number
 
 
-
-
-
 def get_mask_account(account_number: str) -> str:
     """Функция принимает номер аккаунта и скрывает первые его две цифры"""
     replaced_account_number = account_number.replace(account_number[0:-4], "**")

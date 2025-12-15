@@ -3,8 +3,8 @@ from src.files_loaders import read_csv_file, read_excel_file
 from src.processing import filter_by_state, sort_by_date
 from src.generators import filter_by_currency
 from src.project_1 import process_bank_search
-from src.masks import get_mask_account, get_mask_card_number
 from src.widget import mask_account_card
+
 
 def main():
     user_input = input('''Привет! Добро пожаловать в программу работы с банковскими транзакциями.
@@ -64,10 +64,18 @@ def main():
     print("Распечатываю итоговый список транзакций...")
     print(f'''
 всего операций в выборке: {len(dict_)}''')
-    for i in dict_:
-        print(f'''{i["date"]} {i["description"]}
-{i["from"]} -> {i["to"]}
-сумма: {i["amount"]}{i["currency_code"]}''')
 
+    for i in dict_:
+        try:
+            if isinstance(i.get("from", 0.0), float):
+                print(f'''{i.get("date")} {i.get("description")}
+{mask_account_card(i.get("to"))}
+сумма: {i.get("amount")}{i.get("currency_code")}''')
+            else:
+                print(f'''{i.get("date")} {i.get("description")}
+{mask_account_card(i.get("from"))} -> {mask_account_card(i.get("to"))}
+сумма: {i.get("amount")}{i.get("currency_code")}''')
+        except Exception:
+            print(i)
 main()
-# 1
+# 111

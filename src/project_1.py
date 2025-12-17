@@ -12,7 +12,8 @@ def process_bank_search(dict_: list[dict], string_for_search: str) -> list[dict]
     return transactions
 
 
-def process_bank_operations(dict_:list[dict], categories:list)->dict:
+def process_bank_operations(dict_: list[dict], categories: list) -> dict :
+    '''ищет операции в списке словарей по заданной категории: categories'''
     transactions = []
     for i in dict_:
         if i["description"] in categories:

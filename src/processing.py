@@ -1,6 +1,3 @@
-
-
-
 def filter_by_state(transactions: list[dict], state: str = "EXECUTED") -> list[dict]:
     """
      фильтрует список операций по статусу.

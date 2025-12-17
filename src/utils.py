@@ -1,18 +1,15 @@
-import logging
-from logging import Logger
 import json
+import logging
 import os
+from logging import Logger
 from typing import Any
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
-file_handler = logging.FileHandler(f"logs_output/UTILS.log")
+file_handler = logging.FileHandler("logs_output/UTILS.log")
 file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
-
-
-
 
 
 def load_transactions(file_path: str) -> list[dict[str, Any]]:
@@ -58,4 +55,3 @@ def load_transactions(file_path: str) -> list[dict[str, Any]]:
     except Exception as e:
         print(f"❌ Произошла ошибка: {e}")
         return []
-

@@ -1,8 +1,8 @@
-from src.utils import load_transactions
 from src.files_loaders import read_csv_file, read_excel_file
-from src.processing import filter_by_state, sort_by_date
 from src.generators import filter_by_currency
+from src.processing import filter_by_state, sort_by_date
 from src.project_1 import process_bank_search
+from src.utils import load_transactions
 from src.widget import mask_account_card
 
 
@@ -29,7 +29,7 @@ def main():
         else:
             user_input = input("проверьте ваш ввод он должен быть 1, 2 или 3. ввод:")
     while True:
-        user_input = input('''Введите статус, по которому необходимо выполнить фильтрацию. 
+        user_input = input('''Введите статус, по которому необходимо выполнить фильтрацию.
 Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING
 ввод:''').upper()
         if user_input in ('EXECUTED', 'CANCELED', 'PENDING'):
@@ -48,7 +48,7 @@ def main():
                 dict_ = sort_by_date(dict_)
                 break
             elif user_input == "по убыванию":
-                dict_ = sort_by_date(dict_, reverse = False)
+                dict_ = sort_by_date(dict_, reverse=False)
                 break
             else:
                 print("проверьте правильность написания условия 'по возрастанию' или 'по убыванию'")
@@ -64,7 +64,6 @@ def main():
     print("Распечатываю итоговый список транзакций...")
     print(f'''
 всего операций в выборке: {len(dict_)}''')
-
     for i in dict_:
         try:
             if isinstance(i.get("from", 0.0), float):
@@ -77,5 +76,6 @@ def main():
 сумма: {i.get("amount")}{i.get("currency_code")}''')
         except Exception:
             print(i)
+
+
 main()
-# 111

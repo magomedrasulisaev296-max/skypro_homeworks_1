@@ -31,9 +31,11 @@ def log(filename: Optional[str] = None) -> Callable:
         return wrapper
     return decorator
 
+
 @log()
 def hello_world() -> str:
     '''выводит на экран приветствие "hello world"'''
     return "hello world!"
+
 
 hello_world()

@@ -1,13 +1,12 @@
 from typing import Any, Dict
-
 import requests
-
 from src.logs import logger
 
 API_KEY = "your_api_key_here"
 
 
 def get_transaction_amount_in_rub(transaction: Dict[str, Any]) -> float:
+    '''возврощает транзакции в рублях'''
     currency = transaction.get('currency', 'RUB').upper()
     amount = float(transaction.get('amount', 0))
     logger.info(f"Getting transaction amount in RUB from {currency}: {amount}")
@@ -27,4 +26,3 @@ def get_transaction_amount_in_rub(transaction: Dict[str, Any]) -> float:
             return amount
 
     return amount
-

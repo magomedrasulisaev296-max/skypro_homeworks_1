@@ -5,7 +5,7 @@ from src.decorators import log
 
 @log()
 def test_func() -> str:
-    return "ok"
+    return None
 
 
 def test_log_works(capsys: Any) -> None:

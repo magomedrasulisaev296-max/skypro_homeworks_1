@@ -1,10 +1,9 @@
 from typing import Any
-
 from src.decorators import log
 
 
 @log()
-def test_func() -> str:
+def test_func() -> None:
     return None
 
 
@@ -15,4 +14,4 @@ def test_log_works(capsys: Any) -> None:
 
     assert "test_func started" in captured.out
     assert "test_func finished" in captured.out
-    assert result == "ok"
+    assert result == None

@@ -1,9 +1,9 @@
 from typing import Any, Callable, Optional
-
+from functools import wraps
 
 def log(filename: Optional[str] = None) -> Callable:
-    '''при вызове выводит сообщение func.name "started" а после отрабатывания функции выводит func.name "finished"'''
     def decorator(func: Callable) -> Callable:
+        @wraps(func)  # ← ДОБАВЬ ЭТУ СТРОКУ
         def wrapper(*args: Any, **kwargs: Any) -> Any:
             msg = f"{func.__name__} started"
             if filename:
@@ -30,12 +30,3 @@ def log(filename: Optional[str] = None) -> Callable:
                 raise
         return wrapper
     return decorator
-
-
-@log()
-def hello_world() -> str:
-    '''выводит на экран приветствие "hello world"'''
-    return "hello world!"
-
-
-hello_world()

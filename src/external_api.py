@@ -1,5 +1,7 @@
 from typing import Any, Dict
+
 import requests
+
 from src.logs import logger
 
 API_KEY = "your_api_key_here"

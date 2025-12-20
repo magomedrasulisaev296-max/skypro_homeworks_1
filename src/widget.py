@@ -20,6 +20,3 @@ def get_date(date_string: str) -> str:
         return f"{day}.{month}.{year}"
     except:
         return date_string
-
-
-print(mask_account_card("счет 73654108430135874305"))

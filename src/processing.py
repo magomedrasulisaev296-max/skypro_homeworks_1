@@ -1,6 +1,3 @@
-
-
-
 def filter_by_state(transactions: list[dict], state: str = "EXECUTED") -> list[dict]:
     """
      фильтрует список операций по статусу.
@@ -13,9 +10,9 @@ def filter_by_state(transactions: list[dict], state: str = "EXECUTED") -> list[d
         list: отфильтрованный список транзакций
     """
     filtered_dicts = []
-    for i in range(len(transactions)):
-        if transactions[i]["state"] == state:
-            filtered_dicts.append(transactions[i])
+    for i in transactions:
+        if i.get("state") == state:
+            filtered_dicts.append(i)
     return filtered_dicts
 
 

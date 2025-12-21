@@ -4,7 +4,7 @@ from src.generators import card_number_generator, filter_by_currency, transactio
 def test_filter_by_currency() -> None:
     transactions = [
         {"operationAmount": {"currency": {"code": "USD"}}},
-        {"operationAmount": {"currency": {"code": "EUR"}}}
+        {"operationAmount": {"currency": {"code": "EUR"}}},
     ]
     result = list(filter_by_currency(transactions, "USD"))
     assert len(result) == 1
@@ -18,10 +18,7 @@ def test_filter_by_currency_empty() -> None:
 
 
 def test_transaction_descriptions() -> None:
-    transactions = [
-        {"description": "Test 1"},
-        {"description": "Test 2"}
-    ]
+    transactions = [{"description": "Test 1"}, {"description": "Test 2"}]
     gen = transaction_descriptions(transactions)
     assert next(gen) == "Test 1"
     assert next(gen) == "Test 2"

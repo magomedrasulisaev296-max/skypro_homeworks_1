@@ -1,7 +1,8 @@
 import logging
 from pathlib import Path
+import os
 
-log_dir = Path("../logs_output")
+log_dir = Path("logs_output")
 log_dir.mkdir(parents=True, exist_ok=True)
 
 # 2. Потом создаем логгер

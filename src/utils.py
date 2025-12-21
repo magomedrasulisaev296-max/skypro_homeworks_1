@@ -7,7 +7,7 @@ from typing import Any
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 file_handler = logging.FileHandler("logs_output/UTILS.log")
-file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
 
@@ -27,13 +27,13 @@ def load_transactions(file_path: str) -> list[dict[str, Any]]:
             print(f"❌ Файл НЕ СУЩЕСТВУЕТ: {file_path}")
             print(f"Текущая директория: {os.getcwd()}")
             print(f"Содержимое текущей директории: {os.listdir('.')}")
-            if os.path.exists('data'):
+            if os.path.exists("data"):
                 print(f"Содержимое папки data: {os.listdir('data')}")
             else:
                 print("❌ Папка data не найдена")
             return []
 
-        with open(file_path, 'r', encoding='utf-8') as file:
+        with open(file_path, "r", encoding="utf-8") as file:
             data = json.load(file)
 
         if isinstance(data, list):

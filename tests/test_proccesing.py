@@ -6,7 +6,7 @@ transactions = [
     {"id": 2, "state": "CANCELED", "date": "2023-01-01", "amount": 200},
     {"id": 3, "state": "EXECUTED", "date": "2023-01-02", "amount": 300},
     {"id": 4, "state": "PENDING", "date": "2023-01-05", "amount": 400},
-    {"id": 5, "state": "EXECUTED", "date": "2023-01-04", "amount": 500}
+    {"id": 5, "state": "EXECUTED", "date": "2023-01-04", "amount": 500},
 ]
 
 

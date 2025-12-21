@@ -1,4 +1,4 @@
-from src.project_1 import process_bank_search, process_bank_operations
+from src.project_1 import process_bank_operations, process_bank_search
 
 
 def test_bank_functions():
@@ -7,7 +7,7 @@ def test_bank_functions():
         {"description": "Salary transfer", "amount": 200},
         {"description": "Groceries store", "amount": 50},
         {"description": "Transfer to friend", "amount": 75},
-        {"description": "Salary bonus", "amount": 150}
+        {"description": "Salary bonus", "amount": 150},
     ]
 
     # process_bank_search
@@ -19,7 +19,10 @@ def test_bank_functions():
 
     # process_bank_operations
     assert process_bank_operations(data, ["Salary transfer", "Salary bonus", "Groceries store"]) == {
-        "Salary transfer": 1, "Salary bonus": 1, "Groceries store": 1}
+        "Salary transfer": 1,
+        "Salary bonus": 1,
+        "Groceries store": 1,
+    }
     assert process_bank_operations(data, ["Salary transfer"]) == {"Salary transfer": 1}
     assert process_bank_operations(data, ["Nonexistent"]) == {}
     assert process_bank_operations([], ["test"]) == {}

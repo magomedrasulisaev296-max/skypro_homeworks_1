@@ -1,7 +1,6 @@
-import os
-import tempfile
 import unittest
-from unittest.mock import patch, mock_open, call
+from unittest.mock import call, mock_open, patch
+
 from src.decorators import log
 
 
@@ -14,13 +13,10 @@ class TestLogDecorator(unittest.TestCase):
         def test_func():
             return "result"
 
-        with patch('builtins.print') as mock_print:
+        with patch("builtins.print") as mock_print:
             result = test_func()
             self.assertEqual(result, "result")
-            mock_print.assert_has_calls([
-                call("test_func started"),
-                call("test_func finished")
-            ])
+            mock_print.assert_has_calls([call("test_func started"), call("test_func finished")])
 
     def test_log_with_filename(self):
         """Тест 2: Логирование в файл"""
@@ -30,12 +26,12 @@ class TestLogDecorator(unittest.TestCase):
             return "result"
 
         # Мокаем open и проверяем запись
-        with patch('builtins.open', mock_open()) as mock_file:
+        with patch("builtins.open", mock_open()) as mock_file:
             result = test_func()
             self.assertEqual(result, "result")
 
             # Проверяем что файл открывался для добавления
-            mock_file.assert_called_with("test.log", 'a')
+            mock_file.assert_called_with("test.log", "a")
 
             # Проверяем запись двух сообщений
             handle = mock_file()
@@ -50,7 +46,7 @@ class TestLogDecorator(unittest.TestCase):
         def test_func():
             raise ValueError("test error")
 
-        with patch('builtins.print') as mock_print:
+        with patch("builtins.print") as mock_print:
             with self.assertRaises(ValueError):
                 test_func()
 
@@ -67,7 +63,7 @@ class TestLogDecorator(unittest.TestCase):
         def test_func(x, y=0):
             raise RuntimeError("error")
 
-        with patch('builtins.open', mock_open()) as mock_file:
+        with patch("builtins.open", mock_open()) as mock_file:
             with self.assertRaises(RuntimeError):
                 test_func("arg", y="kwarg")
 
@@ -97,7 +93,7 @@ class TestLogDecorator(unittest.TestCase):
         def counter():
             return 1
 
-        with patch('builtins.print') as mock_print:
+        with patch("builtins.print") as mock_print:
             self.assertEqual(counter(), 1)
             self.assertEqual(counter(), 1)
             # 2 вызова × 2 сообщения = 4 print
@@ -110,7 +106,7 @@ class TestLogDecorator(unittest.TestCase):
         def add(a, b):
             return a + b
 
-        with patch('builtins.print'):
+        with patch("builtins.print"):
             self.assertEqual(add(2, 3), 5)
             self.assertEqual(add(10, 20), 30)
 
@@ -121,7 +117,7 @@ class TestLogDecorator(unittest.TestCase):
         def test_func():
             return "test"
 
-        with patch('builtins.print') as mock_print:
+        with patch("builtins.print") as mock_print:
             result = test_func()
             self.assertEqual(result, "test")
             self.assertEqual(mock_print.call_count, 2)
@@ -133,7 +129,7 @@ class TestLogDecorator(unittest.TestCase):
         def test_func():
             return "empty"
 
-        with patch('builtins.open') as mock_open_func:
+        with patch("builtins.open") as mock_open_func:
             # С пустой строкой не должен открывать файл
             result = test_func()
             self.assertEqual(result, "empty")
